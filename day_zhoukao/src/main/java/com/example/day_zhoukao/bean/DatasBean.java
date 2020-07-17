@@ -8,10 +8,12 @@ public class DatasBean {
     @Id
     private Long id;
     private String title;
-    @Generated(hash = 1125384094)
-    public DatasBean(Long id, String title) {
+    private boolean isChecked;
+    @Generated(hash = 12852946)
+    public DatasBean(Long id, String title, boolean isChecked) {
         this.id = id;
         this.title = title;
+        this.isChecked = isChecked;
     }
     @Generated(hash = 128729784)
     public DatasBean() {
@@ -28,5 +30,11 @@ public class DatasBean {
     public void setTitle(String title) {
         this.title = title;
     }
-   
+    public boolean getIsChecked() {
+        return this.isChecked;
+    }
+    public void setIsChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
+    
 }

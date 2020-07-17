@@ -20,6 +20,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content" />
         <ImageView
+            android:id="@+id/tv_imgview"
             android:background="@drawable/sgarrt"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
             app:layout_constraintRight_toRightOf="parent"

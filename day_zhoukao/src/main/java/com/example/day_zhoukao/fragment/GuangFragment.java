@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.example.day_zhoukao.R;
 import com.example.day_zhoukao.adapter.MyAdapter;
+import com.example.day_zhoukao.base.BaseApp;
 import com.example.day_zhoukao.base.BaseFragment;
 import com.example.day_zhoukao.bean.DatasBean;
 import com.example.day_zhoukao.bean.MyBean;
+import com.example.day_zhoukao.db.DatasBeanDao;
 import com.example.day_zhoukao.presenter.MyPresenter;
 import com.example.day_zhoukao.view.MyView;
 
@@ -95,6 +97,16 @@ public class GuangFragment extends BaseFragment<MyPresenter> implements MyView {
 
     @Override
     public void setData(List<DatasBean> data) {
+        list.clear();
+
+        for (int i = 0; i < data.size(); i++) {
+            DatasBean datasBean = data.get(i);
+            List<DatasBean> beans = BaseApp.getInstance().getDaoSession().getDatasBeanDao().queryBuilder()
+                    .where(DatasBeanDao.Properties.Title.eq(datasBean.getTitle())).list();
+            if (beans.size()>0){
+                datasBean.setIsChecked(true);
+            }
+        }
         list.addAll(data);
         myAdapter.notifyDataSetChanged();
     }
